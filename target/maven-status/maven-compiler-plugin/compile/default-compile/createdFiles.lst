@@ -1,0 +1,12 @@
+com\acsmars\smartdispensers\interactions\MilkCow.class
+com\acsmars\smartdispensers\interactions\Interaction.class
+com\acsmars\smartdispensers\interactions\PlantCrop.class
+com\acsmars\smartdispensers\interactions\TillSoil.class
+com\acsmars\smartdispensers\interactions\InteractionType.class
+com\acsmars\smartdispensers\DispenserListener.class
+com\acsmars\smartdispensers\interactions\PlaceBlock.class
+com\acsmars\smartdispensers\interactions\BreakDirt.class
+com\acsmars\smartdispensers\interactions\EquipSaddle.class
+com\acsmars\smartdispensers\interactions\BreakStone.class
+com\acsmars\smartdispensers\interactions\BreakWooden.class
+com\acsmars\smartdispensers\SmartDispensers.class

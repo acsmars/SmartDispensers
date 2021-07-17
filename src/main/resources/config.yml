@@ -1,0 +1,7 @@
+interactions:
+  - bucket:
+      - milkcow
+  - stone:
+      - placeblock
+  - stone_pickaxe:
+      - breakstone
