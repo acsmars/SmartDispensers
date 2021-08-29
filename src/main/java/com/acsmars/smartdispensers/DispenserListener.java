@@ -13,8 +13,10 @@ import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.bukkit.Bukkit.getLogger;
 
@@ -43,8 +45,8 @@ public class DispenserListener implements Listener {
             // Use an item from the inventory
             for (int i = 0; i < dispenserInventory.getSize(); i++) {
                 ItemStack itemStack = dispenserInventory.getItem(i);
-                if (itemStack != null && materialInteractions.containsKey(itemStack.getType())) {
-                    List<InteractionType> possibleInteractionTypes = materialInteractions.get(itemStack.getType());
+                if (itemStack != null && (materialInteractions.containsKey(itemStack.getType()) || itemStack.getType().isBlock())) {
+                    List<InteractionType> possibleInteractionTypes = getInteractions(itemStack.getType());
                     boolean wasCancelled = event.isCancelled();
                     for (InteractionType interactionType : possibleInteractionTypes) {
                         event.setCancelled(true);
@@ -59,8 +61,8 @@ public class DispenserListener implements Listener {
             }
 
             // Use the event item itself
-            if (materialInteractions.containsKey(event.getItem().getType())) {
-                List<InteractionType> possibleInteractionTypes = materialInteractions.get(event.getItem().getType());
+            if (materialInteractions.containsKey(event.getItem().getType()) || event.getItem().getType().isBlock()) {
+                List<InteractionType> possibleInteractionTypes = getInteractions(event.getItem().getType());
                 boolean wasCancelled = event.isCancelled();
                 for (InteractionType interactionType : possibleInteractionTypes) {
                     event.setCancelled(true);
@@ -86,6 +88,14 @@ public class DispenserListener implements Listener {
                 inventory.remove(itemToRemove);
             }
         }, 2L);
+    }
+
+    private List<InteractionType> getInteractions(Material material) {
+        List<InteractionType> possibleInteractionTypes = Optional.ofNullable(materialInteractions.get(material)).orElse(new ArrayList<>());
+        if (possibleInteractionTypes.size() == 0 || material.isBlock()) {
+            possibleInteractionTypes.add(InteractionType.PLACE_BLOCK);
+        }
+        return possibleInteractionTypes;
     }
 
 
