@@ -15,6 +15,7 @@ public enum InteractionType {
     MILK_COW(new MilkCow(), "milkcow", true),
     SHEAR_SHEEP(new ShearSheep(), "shearsheep", false),
     EQUIP_SADDLE(new EquipSaddle(), "equipsaddle", true),
+    IGNITE_MOB(new IgniteMob(), "ignitemob", false),
     ATTACK_WITH_WEAPON(new AttackWithWeapon(), "attackwithweapon", false);
 
     @Getter

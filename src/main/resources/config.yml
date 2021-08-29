@@ -1,4 +1,6 @@
 interactions:
+  - flint_and_steel:
+      - ignitemob
   - bucket:
       - milkcow
   - shears:
@@ -89,6 +91,8 @@ interactions:
   - melon_seeds:
       - plantcrop
   - beetroot_seeds:
+      - plantcrop
+  - potato:
       - plantcrop
   - nether_wart:
       - plantcrop

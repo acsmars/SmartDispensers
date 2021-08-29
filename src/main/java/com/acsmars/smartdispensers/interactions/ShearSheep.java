@@ -9,13 +9,11 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Chest;
 import org.bukkit.block.Dispenser;
-import org.bukkit.entity.Damageable;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Sheep;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.material.Dye;
 import org.bukkit.plugin.Plugin;
 
 import java.util.Map;
@@ -24,11 +22,9 @@ import java.util.Random;
 
 import static java.util.Map.entry;
 
-public class ShearSheep extends ToolInteraction implements Interaction  {
+public class ShearSheep extends InteractionImpl implements Interaction  {
 
     private final int sheepRange = 1;
-
-    static Random random = new Random();
 
     private Map<DyeColor, Material> dyeToWool = Map.ofEntries(
         entry(DyeColor.WHITE, Material.WHITE_WOOL),

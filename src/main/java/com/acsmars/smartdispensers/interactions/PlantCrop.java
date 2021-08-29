@@ -25,6 +25,7 @@ public class PlantCrop implements Interaction {
             entry(Material.PUMPKIN_SEEDS, List.of(Material.FARMLAND)),
             entry(Material.MELON_SEEDS, List.of(Material.FARMLAND)),
             entry(Material.BEETROOT_SEEDS, List.of(Material.FARMLAND)),
+            entry(Material.POTATO, List.of(Material.FARMLAND)),
             entry(Material.NETHER_WART, List.of(Material.SOUL_SAND))
     );
 
@@ -39,6 +40,7 @@ public class PlantCrop implements Interaction {
             entry(Material.PUMPKIN_SEEDS, Material.PUMPKIN_STEM),
             entry(Material.MELON_SEEDS, Material.MELON_STEM),
             entry(Material.BEETROOT_SEEDS, Material.BEETROOTS),
+            entry(Material.POTATO, Material.POTATOES),
             entry(Material.NETHER_WART, Material.NETHER_WART)
     );
 

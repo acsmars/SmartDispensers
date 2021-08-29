@@ -11,9 +11,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
-import static org.bukkit.Bukkit.getLogger;
+import java.util.Random;
 
-public class ToolInteraction implements Interaction {
+public class InteractionImpl implements Interaction {
+
+    public static Random random = new Random();
 
     @Override
     public boolean validInteraction(Plugin plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock) {
@@ -49,7 +51,5 @@ public class ToolInteraction implements Interaction {
                 }
             }
         }, 2L);
-
-
     }
 }

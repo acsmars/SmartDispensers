@@ -47,6 +47,7 @@ public class DispenserListener implements Listener {
                 if (itemStack != null && materialInteractions.containsKey(itemStack.getType())) {
                     getLogger().info("Trying to use inventory item: " + itemStack.getType());
                     List<InteractionType> possibleInteractionTypes = materialInteractions.get(itemStack.getType());
+                    boolean wasCancelled = event.isCancelled();
                     for (InteractionType interactionType: possibleInteractionTypes) {
                         event.setCancelled(true);
                         if (interactionType.getInteraction().validInteraction(plugin, event, itemStack, targetBlock)) {
@@ -56,6 +57,7 @@ public class DispenserListener implements Listener {
                             }
                         }
                     }
+                    event.setCancelled(wasCancelled);
                 }
             }
 
@@ -63,6 +65,7 @@ public class DispenserListener implements Listener {
             // Use the event item itself
             if (materialInteractions.containsKey(event.getItem().getType())) {
                 List<InteractionType> possibleInteractionTypes = materialInteractions.get(event.getItem().getType());
+                boolean wasCancelled = event.isCancelled();
                 for (InteractionType interactionType: possibleInteractionTypes) {
                     event.setCancelled(true);
                     getLogger().info("Trying interaction type: " + interactionType);
@@ -74,8 +77,10 @@ public class DispenserListener implements Listener {
                             }
                             return;
                         }
+                        wasCancelled = true; // If we got into a valid interaction with the event item, we don't want to dispense it
                     }
                 }
+                event.setCancelled(wasCancelled);
             }
         }
     }
