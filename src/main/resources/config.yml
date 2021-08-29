@@ -4,4 +4,8 @@ interactions:
   - stone:
       - placeblock
   - stone_pickaxe:
-      - breakstone
+      - breakwithtool
+  - stone_axe:
+      - breakwithtool
+  - stone_sword:
+      - attackwithweapon
