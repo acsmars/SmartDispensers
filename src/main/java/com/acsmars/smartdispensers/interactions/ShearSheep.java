@@ -24,9 +24,9 @@ import java.util.Random;
 
 import static java.util.Map.entry;
 
-import static org.bukkit.Bukkit.getLogger;
-
 public class ShearSheep extends ToolInteraction implements Interaction  {
+
+    private final int sheepRange = 1;
 
     static Random random = new Random();
 
@@ -56,7 +56,7 @@ public class ShearSheep extends ToolInteraction implements Interaction  {
 
     @Override
     public boolean performInteraction(SmartDispensers plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock) {
-        Optional<Sheep> possibleSheep = targetBlock.getWorld().getNearbyEntities(targetBlock.getLocation(), 1, 1, 1, x -> x.getType() == EntityType.SHEEP)
+        Optional<Sheep> possibleSheep = targetBlock.getWorld().getNearbyEntities(targetBlock.getLocation(), sheepRange, sheepRange, sheepRange, x -> x.getType() == EntityType.SHEEP)
                 .stream().map(x -> (Sheep) x).filter(x -> !x.isSheared()).findFirst();
         if (possibleSheep.isPresent()) {
             // We've milked a cow, now we need to put the milk bucket somewhere.
