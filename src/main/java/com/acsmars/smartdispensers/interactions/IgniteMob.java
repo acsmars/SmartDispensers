@@ -14,8 +14,6 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.Optional;
 
-import static org.bukkit.Bukkit.getLogger;
-
 public class IgniteMob extends InteractionImpl implements Interaction{
 
     private final int mobRange = 1;
@@ -34,7 +32,7 @@ public class IgniteMob extends InteractionImpl implements Interaction{
             LivingEntity entity = possibleEntity.get();
             if (entity instanceof Creeper) {
                 Creeper creeper = (Creeper) entity;
-                creeper.setPowered(true);
+                creeper.ignite();
             }
             else {
                 int newTicks = entity.getFireTicks() + 80;

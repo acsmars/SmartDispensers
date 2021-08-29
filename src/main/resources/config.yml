@@ -1,4 +1,6 @@
 interactions:
+  - trident:
+      - lightningwithtrident
   - flint_and_steel:
       - ignitemob
   - bucket:

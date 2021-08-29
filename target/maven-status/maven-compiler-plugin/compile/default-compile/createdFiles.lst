@@ -15,4 +15,5 @@ com\acsmars\smartdispensers\interactions\IgniteMob.class
 com\acsmars\smartdispensers\interactions\WeaponStats.class
 com\acsmars\smartdispensers\interactions\InteractionImpl.class
 com\acsmars\smartdispensers\interactions\EquipSaddle.class
+com\acsmars\smartdispensers\interactions\LightningWithTrident.class
 com\acsmars\smartdispensers\SmartDispensers.class
