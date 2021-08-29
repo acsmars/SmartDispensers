@@ -10,12 +10,9 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.Optional;
 
-import static org.bukkit.Bukkit.getLogger;
-
 public class AttackWithWeapon implements Interaction{
     @Override
     public boolean validInteraction(Plugin plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock) {
-        getLogger().info("" + sourceItem.getType());
         return WeaponStats.fromMaterial(sourceItem.getType()).isPresent();
     }
 
@@ -23,7 +20,6 @@ public class AttackWithWeapon implements Interaction{
     public boolean performInteraction(SmartDispensers plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock) {
         Optional<LivingEntity> possibleVictim = targetBlock.getWorld().getNearbyEntities(targetBlock.getLocation(), 1, 1, 1, x -> x instanceof LivingEntity)
                 .stream().map(x -> (LivingEntity) x).findFirst();
-        getLogger().info("Victims: " + possibleVictim);
 
         if (possibleVictim.isPresent() && WeaponStats.fromMaterial(sourceItem.getType()).isPresent()) {
             LivingEntity victim = possibleVictim.get();

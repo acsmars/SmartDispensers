@@ -1,7 +1,6 @@
 package com.acsmars.smartdispensers.interactions;
 
 
-import jdk.nashorn.internal.objects.annotations.Getter;
 import lombok.AllArgsConstructor;
 import org.bukkit.Material;
 

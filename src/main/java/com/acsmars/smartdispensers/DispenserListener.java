@@ -65,6 +65,7 @@ public class DispenserListener implements Listener {
                 List<InteractionType> possibleInteractionTypes = materialInteractions.get(event.getItem().getType());
                 for (InteractionType interactionType: possibleInteractionTypes) {
                     event.setCancelled(true);
+                    getLogger().info("Trying interaction type: " + interactionType);
                     if (interactionType.getInteraction().validInteraction(plugin, event, event.getItem(), targetBlock)) {
                         if(interactionType.getInteraction().performInteraction(plugin, event, event.getItem(), targetBlock)) {
                             getLogger().info("Performed dispenser action from inventory item: " + event.getItem().getType());

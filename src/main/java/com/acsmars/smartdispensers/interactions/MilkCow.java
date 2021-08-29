@@ -40,9 +40,9 @@ public class MilkCow implements Interaction {
             sourceItem.setAmount(sourceItem.getAmount() - 1); // If this is an event item, it'll get removed by the scheduler instead
             markMilked(plugin, possibleCow.get());
             // Check for a chest with inventory space below the cow
-            Block belowBlock = targetBlock.getRelative(BlockFace.DOWN);
-            if (belowBlock.getType().equals(Material.CHEST)) {
-                Chest chest = (Chest) belowBlock.getState();
+            Block chestOutput = event.getBlock().getRelative(BlockFace.DOWN);
+            if (chestOutput.getType().equals(Material.CHEST)) {
+                Chest chest = (Chest) chestOutput.getState();
                 Inventory chestInventory = chest.getInventory();
                 if (Util.inventoryHasSpace(chestInventory)) {
                     chestInventory.addItem(new ItemStack(Material.MILK_BUCKET));
