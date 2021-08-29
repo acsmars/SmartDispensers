@@ -25,7 +25,7 @@ public class SmartDispensers extends JavaPlugin {
 
         Map<Material, List<InteractionType>> materialInteractions = parseMaterialInteractions(config);
         getLogger().info(String.format("Loaded interactions for %d dispenser interactions", materialInteractions.size()));
-        dispenserListener = new DispenserListener(materialInteractions);
+        dispenserListener = new DispenserListener(this, materialInteractions);
 
         getServer().getPluginManager().registerEvents(dispenserListener, this);
 
