@@ -8,6 +8,8 @@ import org.bukkit.plugin.Plugin;
 
 public interface Interaction {
     boolean validInteraction(Plugin plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock);
+
     boolean performInteraction(SmartDispensers plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock);
+
     InteractionType getInteractionType();
 }

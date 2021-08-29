@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 public enum InteractionType {
-    BREAK_WITH_TOOL(new BreakWithTool(),"breakwithtool", false),
+    BREAK_WITH_TOOL(new BreakWithTool(), "breakwithtool", false),
     PLANT_CROP(new PlantCrop(), "plantcrop", true),
     TILL_SOIL(new TillSoil(), "tillsoil", false),
     PLACE_BLOCK(new PlaceBlock(), "placeblock", true),
@@ -16,6 +16,7 @@ public enum InteractionType {
     SHEAR_SHEEP(new ShearSheep(), "shearsheep", false),
     EQUIP_SADDLE(new EquipSaddle(), "equipsaddle", true),
     IGNITE_MOB(new IgniteMob(), "ignitemob", false),
+    LIGHTNING_WITH_TRIDENT(new LightningWithTrident(), "lightningwithtrident", false),
     ATTACK_WITH_WEAPON(new AttackWithWeapon(), "attackwithweapon", false);
 
     @Getter

@@ -18,17 +18,16 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.Map;
 import java.util.Optional;
-import java.util.Random;
 
 import static java.util.Map.entry;
 
-public class ShearSheep extends InteractionImpl implements Interaction  {
+public class ShearSheep extends InteractionImpl implements Interaction {
 
     private final int sheepRange = 1;
 
     private Map<DyeColor, Material> dyeToWool = Map.ofEntries(
-        entry(DyeColor.WHITE, Material.WHITE_WOOL),
-        entry(DyeColor.ORANGE, Material.ORANGE_WOOL),
+            entry(DyeColor.WHITE, Material.WHITE_WOOL),
+            entry(DyeColor.ORANGE, Material.ORANGE_WOOL),
             entry(DyeColor.MAGENTA, Material.MAGENTA_WOOL),
             entry(DyeColor.LIGHT_BLUE, Material.LIGHT_BLUE_WOOL),
             entry(DyeColor.YELLOW, Material.YELLOW_WOOL),
@@ -47,7 +46,7 @@ public class ShearSheep extends InteractionImpl implements Interaction  {
 
     @Override
     public boolean validInteraction(Plugin plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock) {
-        return (sourceItem.getType().equals(Material.SHEARS) && targetBlock.getType() != Material.WATER && targetBlock.getType() != Material.LAVA);
+        return sourceItem.getType().equals(Material.SHEARS);
     }
 
     @Override
