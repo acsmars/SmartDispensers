@@ -1,6 +1,9 @@
 interactions:
   - bucket:
       - milkcow
+  - shears:
+      - shearsheep
+      - breakwithtool
   - wooden_pickaxe:
       - breakwithtool
   - stone_pickaxe:

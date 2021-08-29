@@ -13,6 +13,7 @@ public enum InteractionType {
     TILL_SOIL(new TillSoil(), "tillsoil", false),
     PLACE_BLOCK(new PlaceBlock(), "placeblock", true),
     MILK_COW(new MilkCow(), "milkcow", true),
+    SHEAR_SHEEP(new ShearSheep(), "shearsheep", false),
     EQUIP_SADDLE(new EquipSaddle(), "equipsaddle", true),
     ATTACK_WITH_WEAPON(new AttackWithWeapon(), "attackwithweapon", false);
 

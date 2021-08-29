@@ -9,6 +9,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.block.Chest;
 import org.bukkit.entity.Cow;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Sheep;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -35,7 +36,6 @@ public class MilkCow implements Interaction {
         Optional<Cow> possibleCow = targetBlock.getWorld().getNearbyEntities(targetBlock.getLocation(), 1, 1, 1, x -> x.getType() == EntityType.COW)
                 .stream().map(x -> (Cow) x).filter(x -> isMilkable(plugin, x)).findFirst();
         if (possibleCow.isPresent()) {
-
             // We've milked a cow, now we need to put the milk bucket somewhere.
             sourceItem.setAmount(sourceItem.getAmount() - 1); // If this is an event item, it'll get removed by the scheduler instead
             markMilked(plugin, possibleCow.get());
