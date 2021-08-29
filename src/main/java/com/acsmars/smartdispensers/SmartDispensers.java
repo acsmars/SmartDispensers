@@ -31,6 +31,7 @@ public class SmartDispensers extends JavaPlugin {
 
         getLogger().info("Smart Dispensers Started");
     }
+
     @Override
     public void onDisable() {
         getLogger().info("Smart Dispensers Disabled");
@@ -39,7 +40,7 @@ public class SmartDispensers extends JavaPlugin {
     private Map<Material, List<InteractionType>> parseMaterialInteractions(FileConfiguration config) {
         Map<Material, List<InteractionType>> map = new HashMap<>();
         List<Map<?, ?>> rawInteractions = (List<Map<?, ?>>) config.getMapList("interactions");
-        for (Map<?,?> interaction: rawInteractions) {
+        for (Map<?, ?> interaction : rawInteractions) {
             Map.Entry entry = interaction.entrySet().stream().findFirst().get();
             String materialName = (String) entry.getKey();
             List<String> possibleInteractions = (List<String>) entry.getValue();

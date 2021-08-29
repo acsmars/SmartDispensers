@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 public enum InteractionType {
-    BREAK_WITH_TOOL(new BreakWithTool(),"breakwithtool", false),
+    BREAK_WITH_TOOL(new BreakWithTool(), "breakwithtool", false),
     PLANT_CROP(new PlantCrop(), "plantcrop", true),
     TILL_SOIL(new TillSoil(), "tillsoil", false),
     PLACE_BLOCK(new PlaceBlock(), "placeblock", true),

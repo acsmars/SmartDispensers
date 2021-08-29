@@ -12,7 +12,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 
 import java.util.List;
 import java.util.Map;
@@ -30,7 +29,7 @@ public class DispenserListener implements Listener {
         this.materialInteractions = materialInteractions;
     }
 
-    @EventHandler(priority=EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     private void onDispenserFire(BlockDispenseEvent event) {
         // Check dispenser inventory
         Block block = event.getBlock();
@@ -45,14 +44,12 @@ public class DispenserListener implements Listener {
             for (int i = 0; i < dispenserInventory.getSize(); i++) {
                 ItemStack itemStack = dispenserInventory.getItem(i);
                 if (itemStack != null && materialInteractions.containsKey(itemStack.getType())) {
-                    getLogger().info("Trying to use inventory item: " + itemStack.getType());
                     List<InteractionType> possibleInteractionTypes = materialInteractions.get(itemStack.getType());
                     boolean wasCancelled = event.isCancelled();
-                    for (InteractionType interactionType: possibleInteractionTypes) {
+                    for (InteractionType interactionType : possibleInteractionTypes) {
                         event.setCancelled(true);
                         if (interactionType.getInteraction().validInteraction(plugin, event, itemStack, targetBlock)) {
                             if (interactionType.getInteraction().performInteraction(plugin, event, itemStack, targetBlock)) {
-                                getLogger().info("Performed dispenser action from inventory item: " + itemStack.getType());
                                 return;
                             }
                         }
@@ -61,17 +58,14 @@ public class DispenserListener implements Listener {
                 }
             }
 
-            getLogger().info("Trying to use event item:" + event.getItem().getType());
             // Use the event item itself
             if (materialInteractions.containsKey(event.getItem().getType())) {
                 List<InteractionType> possibleInteractionTypes = materialInteractions.get(event.getItem().getType());
                 boolean wasCancelled = event.isCancelled();
-                for (InteractionType interactionType: possibleInteractionTypes) {
+                for (InteractionType interactionType : possibleInteractionTypes) {
                     event.setCancelled(true);
-                    getLogger().info("Trying interaction type: " + interactionType);
                     if (interactionType.getInteraction().validInteraction(plugin, event, event.getItem(), targetBlock)) {
-                        if(interactionType.getInteraction().performInteraction(plugin, event, event.getItem(), targetBlock)) {
-                            getLogger().info("Performed dispenser action from inventory item: " + event.getItem().getType());
+                        if (interactionType.getInteraction().performInteraction(plugin, event, event.getItem(), targetBlock)) {
                             if (interactionType.consumeItem) {
                                 scheduleRemoval(dispenserInventory, event.getItem());
                             }
@@ -90,7 +84,6 @@ public class DispenserListener implements Listener {
             @Override
             public void run() {
                 inventory.remove(itemToRemove);
-                getLogger().info("Removed item: " + itemToRemove.getType());
             }
         }, 2L);
     }

@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.Arrays;
 import java.util.List;
 
-public class TillSoil implements Interaction{
+public class TillSoil implements Interaction {
 
     final List<Material> hoes = Arrays.asList(Material.WOODEN_HOE, Material.STONE_HOE, Material.GOLDEN_HOE, Material.IRON_HOE, Material.DIAMOND_HOE, Material.NETHERITE_HOE);
     final List<Material> tillAble = Arrays.asList(Material.GRASS_BLOCK, Material.DIRT, Material.GRASS_PATH);
@@ -27,8 +27,7 @@ public class TillSoil implements Interaction{
         Block blockToTill = null;
         if (tillAble.contains(targetBlock.getType())) {
             blockToTill = targetBlock;
-        }
-        else if (tillAble.contains(belowBlock.getType())) {
+        } else if (tillAble.contains(belowBlock.getType())) {
             blockToTill = belowBlock;
         }
         if (blockToTill != null) {

@@ -5,8 +5,6 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Dispenser;
 import org.bukkit.entity.Creeper;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Horse;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.inventory.ItemStack;
@@ -14,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.Optional;
 
-public class IgniteMob extends InteractionImpl implements Interaction{
+public class IgniteMob extends InteractionImpl implements Interaction {
 
     private final int mobRange = 1;
 
@@ -33,8 +31,7 @@ public class IgniteMob extends InteractionImpl implements Interaction{
             if (entity instanceof Creeper) {
                 Creeper creeper = (Creeper) entity;
                 creeper.ignite();
-            }
-            else {
+            } else {
                 int newTicks = entity.getFireTicks() + 80;
                 entity.setFireTicks(newTicks);
             }

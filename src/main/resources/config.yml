@@ -1,4 +1,6 @@
 interactions:
+  - saddle:
+      - equipsaddle
   - trident:
       - lightningwithtrident
   - flint_and_steel:

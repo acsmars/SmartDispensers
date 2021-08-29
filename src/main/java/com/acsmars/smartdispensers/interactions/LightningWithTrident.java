@@ -8,7 +8,7 @@ import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
-public class LightningWithTrident extends InteractionImpl implements Interaction{
+public class LightningWithTrident extends InteractionImpl implements Interaction {
 
     @Override
     public boolean validInteraction(Plugin plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock) {

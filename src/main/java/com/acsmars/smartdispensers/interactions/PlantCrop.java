@@ -11,6 +11,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
 import static java.util.Map.entry;
 
 public class PlantCrop implements Interaction {
@@ -56,8 +57,7 @@ public class PlantCrop implements Interaction {
         Block belowBlock = targetBlock.getRelative(BlockFace.DOWN);
         if (allowedFarmland.contains(targetBlock.getType())) {
             blockToPlantOn = targetBlock;
-        }
-        else if (allowedFarmland.contains(belowBlock.getType())) {
+        } else if (allowedFarmland.contains(belowBlock.getType())) {
             blockToPlantOn = belowBlock;
         }
 

@@ -9,7 +9,6 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.block.Chest;
 import org.bukkit.entity.Cow;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Sheep;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -19,8 +18,6 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.List;
 import java.util.Optional;
-
-import static org.bukkit.Bukkit.getLogger;
 
 public class MilkCow implements Interaction {
 
@@ -57,7 +54,6 @@ public class MilkCow implements Interaction {
             } catch (NullPointerException npe) {
             }
         }
-        getLogger().info("No milkable cow");
         return false;
     }
 
@@ -77,6 +73,7 @@ public class MilkCow implements Interaction {
 
     /**
      * Timestamp this cow with the current time it was milked.
+     *
      * @param cow
      */
     private void markMilked(Plugin plugin, Cow cow) {
