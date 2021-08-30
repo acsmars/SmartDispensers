@@ -2,7 +2,7 @@ interactions:
   - saddle:
       - equipsaddle
   - trident:
-      - lightningwithtrident
+      - chargecreeper
   - flint_and_steel:
       - ignitemob
   - bucket:

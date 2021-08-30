@@ -16,7 +16,7 @@ public enum InteractionType {
     SHEAR_SHEEP(new ShearSheep(), "shearsheep", false),
     EQUIP_SADDLE(new EquipSaddle(), "equipsaddle", true),
     IGNITE_MOB(new IgniteMob(), "ignitemob", false),
-    LIGHTNING_WITH_TRIDENT(new LightningWithTrident(), "lightningwithtrident", false),
+    CHARGE_CREEPER(new ChargeCreeper(), "chargecreeper", false),
     ATTACK_WITH_WEAPON(new AttackWithWeapon(), "attackwithweapon", false);
 
     @Getter
