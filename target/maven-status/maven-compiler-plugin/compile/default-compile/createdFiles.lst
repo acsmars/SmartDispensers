@@ -4,6 +4,7 @@ com\acsmars\smartdispensers\interactions\PlantCrop.class
 com\acsmars\smartdispensers\interactions\TillSoil.class
 com\acsmars\smartdispensers\interactions\AttackWithWeapon.class
 com\acsmars\smartdispensers\interactions\BreakWithTool.class
+com\acsmars\smartdispensers\interactions\ChargeCreeper.class
 com\acsmars\smartdispensers\interactions\InteractionType.class
 com\acsmars\smartdispensers\DispenserListener.class
 com\acsmars\smartdispensers\interactions\InteractionImpl$1.class
@@ -15,5 +16,4 @@ com\acsmars\smartdispensers\interactions\IgniteMob.class
 com\acsmars\smartdispensers\interactions\WeaponStats.class
 com\acsmars\smartdispensers\interactions\InteractionImpl.class
 com\acsmars\smartdispensers\interactions\EquipSaddle.class
-com\acsmars\smartdispensers\interactions\LightningWithTrident.class
 com\acsmars\smartdispensers\SmartDispensers.class
