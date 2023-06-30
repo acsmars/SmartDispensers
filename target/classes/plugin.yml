@@ -1,4 +1,4 @@
 name: SmartDispensers
 version: 1.0
 main: com.acsmars.smartdispensers.SmartDispensers
-api-version: 1.13
+api-version: 1.18.2
