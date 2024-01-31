@@ -39,6 +39,11 @@ public class BreakWithTool implements Interaction {
             }
         }
 
+        // If the block isn't breakable with this tool, don't break it
+        if (targetBlock.getDrops(sourceItem).size() < 1) {
+            return false;
+        }
+
         targetBlock.breakNaturally(sourceItem);
         event.setCancelled(true);
         return true;
