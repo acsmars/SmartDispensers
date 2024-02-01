@@ -56,6 +56,7 @@ public class DispenserListener implements Listener {
                             }
                         }
                     }
+
                     event.setCancelled(wasCancelled);
                 }
             }
@@ -73,11 +74,13 @@ public class DispenserListener implements Listener {
                             }
                             return;
                         }
-                        wasCancelled = true; // If we got into a valid interaction with the event item, we don't want to dispense it
+                        wasCancelled = event.isCancelled(); // If we got into a valid interaction with the event item, we don't want to dispense it
                     }
                 }
                 event.setCancelled(wasCancelled);
             }
+
+            getLogger().info("Event cancelled: " + event.isCancelled());
         }
     }
 

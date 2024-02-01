@@ -10,6 +10,8 @@ import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
+import java.util.List;
+
 public class BreakWithTool implements Interaction {
     @Override
     public boolean validInteraction(Plugin plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock) {
@@ -39,10 +41,17 @@ public class BreakWithTool implements Interaction {
             }
         }
 
+        if (List.of(Material.BEE_NEST, Material.BEEHIVE).contains(targetBlock.getType())) {
+            event.setCancelled(false);
+            return true;
+        }
+
         // If the block isn't breakable with this tool, don't break it
         if (targetBlock.getDrops(sourceItem).size() < 1) {
+            event.setCancelled(true);
             return false;
         }
+
 
         targetBlock.breakNaturally(sourceItem);
         event.setCancelled(true);
