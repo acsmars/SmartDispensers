@@ -7,6 +7,7 @@ interactions:
       - ignitemob
   - bucket:
       - milkcow
+      - collectfluid
   - shears:
       - shearsheep
       - breakwithtool

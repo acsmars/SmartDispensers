@@ -79,17 +79,13 @@ public class DispenserListener implements Listener {
                 }
                 event.setCancelled(wasCancelled);
             }
-
-            getLogger().info("Event cancelled: " + event.isCancelled());
         }
     }
 
     private void scheduleRemoval(Inventory inventory, ItemStack itemToRemove) {
-        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-            @Override
-            public void run() {
-                inventory.remove(itemToRemove);
-            }
+        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+            if (itemToRemove.getAmount() > 1) itemToRemove.setAmount(itemToRemove.getAmount() - 1);
+            else inventory.remove(itemToRemove);
         }, 2L);
     }
 
