@@ -5,10 +5,12 @@ com\acsmars\smartdispensers\interactions\TillSoil.class
 com\acsmars\smartdispensers\interactions\AttackWithWeapon.class
 com\acsmars\smartdispensers\interactions\BreakWithTool.class
 com\acsmars\smartdispensers\interactions\ChargeCreeper.class
+com\acsmars\smartdispensers\interactions\CollectFluid.class
 com\acsmars\smartdispensers\interactions\InteractionType.class
+com\acsmars\smartdispensers\interactions\CollectFluid$1.class
 com\acsmars\smartdispensers\DispenserListener.class
 com\acsmars\smartdispensers\interactions\InteractionImpl$1.class
-com\acsmars\smartdispensers\DispenserListener$1.class
+com\acsmars\smartdispensers\interactions\PlantCrop$MaterialSide.class
 com\acsmars\smartdispensers\interactions\ShearSheep.class
 com\acsmars\smartdispensers\interactions\PlaceBlock.class
 com\acsmars\smartdispensers\Util.class

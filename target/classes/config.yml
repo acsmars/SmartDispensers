@@ -101,3 +101,7 @@ interactions:
       - plantcrop
   - nether_wart:
       - plantcrop
+  - carrot:
+      - plantcrop
+  - cocoa_beans:
+      - plantcrop
