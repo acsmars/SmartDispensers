@@ -109,3 +109,11 @@ interactions:
       - plantcrop
   - wheat:
       - breedmob
+  - carrot:
+      - breedmob
+  - wheat_seeds:
+      - breedmob
+  - slime_ball:
+      - breedmob
+  - cactus:
+      - breedmob
