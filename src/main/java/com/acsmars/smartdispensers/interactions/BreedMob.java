@@ -54,6 +54,7 @@ public class BreedMob implements Interaction {
         if (possibleAnimal.isPresent()) {
             sourceItem.setAmount(sourceItem.getAmount() - 1); // If this is an event item, it'll get removed by the scheduler instead
             possibleAnimal.get().setLoveModeTicks(600);
+            return true;
         }
         return false;
     }
