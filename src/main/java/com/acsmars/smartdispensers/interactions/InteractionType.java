@@ -19,6 +19,7 @@ public enum InteractionType {
     PLACE_BLOCK(new PlaceBlock(), "placeblock", true),
     PLANT_CROP(new PlantCrop(), "plantcrop", true),
     SHEAR_SHEEP(new ShearSheep(), "shearsheep", false),
+    SHEAR_MOOSHROOM(new ShearMooshroom(), "shearmooshroom", false),
     TILL_SOIL(new TillSoil(), "tillsoil", false);
 
     @Getter

@@ -12,6 +12,7 @@ interactions:
       - collectfluid
   - shears:
       - shearsheep
+      - shearmooshroom
       - breakwithtool
   - wooden_pickaxe:
       - breakwithtool
@@ -108,4 +109,12 @@ interactions:
   - cocoa_beans:
       - plantcrop
   - wheat:
+      - breedmob
+  - carrot:
+      - breedmob
+  - wheat_seeds:
+      - breedmob
+  - slime_ball:
+      - breedmob
+  - cactus:
       - breedmob

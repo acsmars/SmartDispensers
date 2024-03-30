@@ -12,6 +12,7 @@ interactions:
       - collectfluid
   - shears:
       - shearsheep
+      - shearmooshroom
       - breakwithtool
   - wooden_pickaxe:
       - breakwithtool
