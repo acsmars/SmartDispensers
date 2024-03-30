@@ -23,12 +23,13 @@ import static org.bukkit.Bukkit.getLogger;
 public class DispenserListener implements Listener {
 
     Map<Material, List<InteractionType>> materialInteractions;
-
+    List<Material> nonPlaceableBlocks;
     SmartDispensers plugin;
 
-    DispenserListener(SmartDispensers plugin, Map<Material, List<InteractionType>> materialInteractions) {
+    DispenserListener(SmartDispensers plugin, Map<Material, List<InteractionType>> materialInteractions, List<Material> nonPlaceableBlocks) {
         this.plugin = plugin;
         this.materialInteractions = materialInteractions;
+        this.nonPlaceableBlocks = nonPlaceableBlocks;
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -91,7 +92,7 @@ public class DispenserListener implements Listener {
 
     private List<InteractionType> getInteractions(Material material) {
         List<InteractionType> possibleInteractionTypes = Optional.ofNullable(materialInteractions.get(material)).orElse(new ArrayList<>());
-        if (possibleInteractionTypes.size() == 0 || material.isBlock()) {
+        if ((possibleInteractionTypes.size() == 0 || material.isBlock()) && !nonPlaceableBlocks.contains(material)) {
             possibleInteractionTypes.add(InteractionType.PLACE_BLOCK);
         }
         return possibleInteractionTypes;

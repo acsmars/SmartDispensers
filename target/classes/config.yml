@@ -1,3 +1,5 @@
+nonplaceable:
+  - wheat
 interactions:
   - saddle:
       - equipsaddle
@@ -105,3 +107,5 @@ interactions:
       - plantcrop
   - cocoa_beans:
       - plantcrop
+  - wheat:
+      - breedmob

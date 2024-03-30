@@ -10,6 +10,7 @@ import java.util.Optional;
 public enum InteractionType {
     ATTACK_WITH_WEAPON(new AttackWithWeapon(), "attackwithweapon", false),
     BREAK_WITH_TOOL(new BreakWithTool(), "breakwithtool", false),
+    BREED_MOB(new BreedMob(), "breedmob", true),
     CHARGE_CREEPER(new ChargeCreeper(), "chargecreeper", false),
     COLLECT_FLUID(new CollectFluid(), "collectfluid", true),
     EQUIP_SADDLE(new EquipSaddle(), "equipsaddle", true),
