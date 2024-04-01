@@ -10,6 +10,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Chest;
 import org.bukkit.block.Dispenser;
+import org.bukkit.entity.Breedable;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.MushroomCow;
 import org.bukkit.entity.Sheep;
@@ -29,8 +30,11 @@ public class ShearMooshroom extends InteractionImpl implements Interaction {
 
     @Override
     public boolean performInteraction(SmartDispensers plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock) {
-        Optional<MushroomCow> possibleMushroomCow = targetBlock.getWorld().getNearbyEntities(targetBlock.getLocation(), range, range, range, x -> x.getType() == EntityType.MUSHROOM_COW)
-                .stream().map(x -> (MushroomCow) x).findFirst();
+        Optional<MushroomCow> possibleMushroomCow = targetBlock.getWorld()
+                .getNearbyEntities(targetBlock.getLocation(), range, range, range, x -> x.getType() == EntityType.MUSHROOM_COW)
+                .stream().map(x -> (MushroomCow) x)
+                .filter(Breedable::canBreed)
+                .findFirst();
         if (possibleMushroomCow.isPresent()) {
             // We've milked a cow, now we need to put the milk bucket somewhere.
             MushroomCow mushroomCow = possibleMushroomCow.get();
