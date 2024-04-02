@@ -46,6 +46,7 @@ public class InteractionImpl implements Interaction {
                             if (damageable.getDamage() > material.getMaxDurability()) {
                                 itemStack.setType(Material.AIR);
                             }
+                            return;
                         }
                     }
                 }
