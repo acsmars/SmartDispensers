@@ -31,7 +31,7 @@ public class ShearMooshroom extends InteractionImpl implements Interaction {
     @Override
     public boolean performInteraction(SmartDispensers plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock) {
         Optional<MushroomCow> possibleMushroomCow = targetBlock.getWorld()
-                .getNearbyEntities(targetBlock.getLocation(), range, range, range, x -> x.getType() == EntityType.MUSHROOM_COW)
+                .getNearbyEntities(targetBlock.getLocation(), range, range, range, x -> x.getType() == EntityType.MOOSHROOM)
                 .stream().map(x -> (MushroomCow) x)
                 .filter(Breedable::canBreed)
                 .findFirst();
