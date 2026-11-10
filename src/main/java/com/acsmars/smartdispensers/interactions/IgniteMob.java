@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class IgniteMob extends InteractionImpl implements Interaction {
 
@@ -18,15 +19,19 @@ public class IgniteMob extends InteractionImpl implements Interaction {
 
     @Override
     public boolean validInteraction(Plugin plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock) {
-        return (sourceItem.getType().equals(Material.FLINT_AND_STEEL) && targetBlock.getType() != Material.WATER && targetBlock.getType() != Material.LAVA);
+        return (sourceItem.getType().equals(Material.FLINT_AND_STEEL));
     }
 
     @Override
     public boolean performInteraction(SmartDispensers plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock) {
-        Optional<LivingEntity> possibleEntity = targetBlock.getWorld().getNearbyEntities(targetBlock.getLocation(), mobRange, mobRange, mobRange, x -> x instanceof LivingEntity)
-                .stream().map(x -> (LivingEntity) x).filter(x -> (!(x instanceof Creeper)) || !((Creeper) x).isPowered()).findFirst();
+        Stream<LivingEntity> possibleEntities = targetBlock.getWorld().getNearbyEntities(targetBlock.getLocation(), mobRange, mobRange, mobRange, x -> x instanceof LivingEntity)
+                .stream().map(x -> (LivingEntity) x);
+        Optional<LivingEntity> possibleEntity = possibleEntities.filter(x -> x instanceof Creeper).findAny();
+        if (!possibleEntity.isPresent()) {
+            possibleEntity = possibleEntity.stream().findFirst();
+        }
+
         if (possibleEntity.isPresent()) {
-            // We have a horse with no saddle. Let's put a saddle on it.
             LivingEntity entity = possibleEntity.get();
             if (entity instanceof Creeper) {
                 Creeper creeper = (Creeper) entity;

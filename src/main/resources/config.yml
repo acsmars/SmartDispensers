@@ -1,14 +1,18 @@
+nonplaceable:
+  - wheat
 interactions:
   - saddle:
       - equipsaddle
   - trident:
-      - lightningwithtrident
+      - chargecreeper
   - flint_and_steel:
       - ignitemob
   - bucket:
       - milkcow
+      - collectfluid
   - shears:
       - shearsheep
+      - shearmooshroom
       - breakwithtool
   - wooden_pickaxe:
       - breakwithtool
@@ -100,3 +104,17 @@ interactions:
       - plantcrop
   - nether_wart:
       - plantcrop
+  - carrot:
+      - plantcrop
+  - cocoa_beans:
+      - plantcrop
+  - wheat:
+      - breedmob
+  - carrot:
+      - breedmob
+  - wheat_seeds:
+      - breedmob
+  - slime_ball:
+      - breedmob
+  - cactus:
+      - breedmob

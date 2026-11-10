@@ -23,12 +23,13 @@ import static org.bukkit.Bukkit.getLogger;
 public class DispenserListener implements Listener {
 
     Map<Material, List<InteractionType>> materialInteractions;
-
+    List<Material> nonPlaceableBlocks;
     SmartDispensers plugin;
 
-    DispenserListener(SmartDispensers plugin, Map<Material, List<InteractionType>> materialInteractions) {
+    DispenserListener(SmartDispensers plugin, Map<Material, List<InteractionType>> materialInteractions, List<Material> nonPlaceableBlocks) {
         this.plugin = plugin;
         this.materialInteractions = materialInteractions;
+        this.nonPlaceableBlocks = nonPlaceableBlocks;
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -56,6 +57,7 @@ public class DispenserListener implements Listener {
                             }
                         }
                     }
+
                     event.setCancelled(wasCancelled);
                 }
             }
@@ -73,7 +75,7 @@ public class DispenserListener implements Listener {
                             }
                             return;
                         }
-                        wasCancelled = true; // If we got into a valid interaction with the event item, we don't want to dispense it
+                        wasCancelled = event.isCancelled(); // If we got into a valid interaction with the event item, we don't want to dispense it
                     }
                 }
                 event.setCancelled(wasCancelled);
@@ -82,17 +84,15 @@ public class DispenserListener implements Listener {
     }
 
     private void scheduleRemoval(Inventory inventory, ItemStack itemToRemove) {
-        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-            @Override
-            public void run() {
-                inventory.remove(itemToRemove);
-            }
+        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+            if (itemToRemove.getAmount() > 1) itemToRemove.setAmount(itemToRemove.getAmount() - 1);
+            else inventory.remove(itemToRemove);
         }, 2L);
     }
 
     private List<InteractionType> getInteractions(Material material) {
         List<InteractionType> possibleInteractionTypes = Optional.ofNullable(materialInteractions.get(material)).orElse(new ArrayList<>());
-        if (possibleInteractionTypes.size() == 0 || material.isBlock()) {
+        if ((possibleInteractionTypes.size() == 0 || material.isBlock()) && !nonPlaceableBlocks.contains(material)) {
             possibleInteractionTypes.add(InteractionType.PLACE_BLOCK);
         }
         return possibleInteractionTypes;

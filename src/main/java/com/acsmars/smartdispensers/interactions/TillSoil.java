@@ -14,7 +14,7 @@ import java.util.List;
 public class TillSoil implements Interaction {
 
     final List<Material> hoes = Arrays.asList(Material.WOODEN_HOE, Material.STONE_HOE, Material.GOLDEN_HOE, Material.IRON_HOE, Material.DIAMOND_HOE, Material.NETHERITE_HOE);
-    final List<Material> tillAble = Arrays.asList(Material.GRASS_BLOCK, Material.DIRT, Material.GRASS_PATH);
+    final List<Material> tillAble = Arrays.asList(Material.GRASS_BLOCK, Material.DIRT, Material.DIRT_PATH);
 
     @Override
     public boolean validInteraction(Plugin plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock) {

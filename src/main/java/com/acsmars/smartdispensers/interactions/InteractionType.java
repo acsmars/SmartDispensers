@@ -8,16 +8,19 @@ import java.util.Optional;
 
 @AllArgsConstructor
 public enum InteractionType {
+    ATTACK_WITH_WEAPON(new AttackWithWeapon(), "attackwithweapon", false),
     BREAK_WITH_TOOL(new BreakWithTool(), "breakwithtool", false),
-    PLANT_CROP(new PlantCrop(), "plantcrop", true),
-    TILL_SOIL(new TillSoil(), "tillsoil", false),
-    PLACE_BLOCK(new PlaceBlock(), "placeblock", true),
-    MILK_COW(new MilkCow(), "milkcow", true),
-    SHEAR_SHEEP(new ShearSheep(), "shearsheep", false),
+    BREED_MOB(new BreedMob(), "breedmob", true),
+    CHARGE_CREEPER(new ChargeCreeper(), "chargecreeper", false),
+    COLLECT_FLUID(new CollectFluid(), "collectfluid", true),
     EQUIP_SADDLE(new EquipSaddle(), "equipsaddle", true),
     IGNITE_MOB(new IgniteMob(), "ignitemob", false),
-    LIGHTNING_WITH_TRIDENT(new LightningWithTrident(), "lightningwithtrident", false),
-    ATTACK_WITH_WEAPON(new AttackWithWeapon(), "attackwithweapon", false);
+    MILK_COW(new MilkCow(), "milkcow", true),
+    PLACE_BLOCK(new PlaceBlock(), "placeblock", true),
+    PLANT_CROP(new PlantCrop(), "plantcrop", true),
+    SHEAR_SHEEP(new ShearSheep(), "shearsheep", false),
+    SHEAR_MOOSHROOM(new ShearMooshroom(), "shearmooshroom", false),
+    TILL_SOIL(new TillSoil(), "tillsoil", false);
 
     @Getter
     public final Interaction interaction;

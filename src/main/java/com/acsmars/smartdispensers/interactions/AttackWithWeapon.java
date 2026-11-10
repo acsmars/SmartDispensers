@@ -2,6 +2,7 @@ package com.acsmars.smartdispensers.interactions;
 
 import com.acsmars.smartdispensers.SmartDispensers;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Ageable;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockDispenseEvent;
@@ -20,7 +21,10 @@ public class AttackWithWeapon implements Interaction {
     @Override
     public boolean performInteraction(SmartDispensers plugin, BlockDispenseEvent event, ItemStack sourceItem, Block targetBlock) {
         List<LivingEntity> possibleVictims = targetBlock.getWorld().getNearbyEntities(targetBlock.getLocation(), 1, 1, 1, x -> x instanceof LivingEntity)
-                .stream().map(x -> (LivingEntity) x).limit(16).collect(Collectors.toList());
+                .stream()
+                .map(x -> (LivingEntity) x)
+                .filter(this::isAdult)
+                .limit(16).collect(Collectors.toList());
 
         if (WeaponStats.fromMaterial(sourceItem.getType()).isPresent()) {
             boolean damagedEntity = false;
@@ -38,5 +42,9 @@ public class AttackWithWeapon implements Interaction {
     @Override
     public InteractionType getInteractionType() {
         return InteractionType.ATTACK_WITH_WEAPON;
+    }
+
+    private boolean isAdult(LivingEntity entity) {
+        return !(entity instanceof Ageable) || ((Ageable) entity).isAdult();
     }
 }

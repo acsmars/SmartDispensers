@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Chest;
+import org.bukkit.block.Container;
 import org.bukkit.entity.Cow;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.block.BlockDispenseEvent;
@@ -36,13 +37,13 @@ public class MilkCow implements Interaction {
             // We've milked a cow, now we need to put the milk bucket somewhere.
             sourceItem.setAmount(sourceItem.getAmount() - 1); // If this is an event item, it'll get removed by the scheduler instead
             markMilked(plugin, possibleCow.get());
-            // Check for a chest with inventory space below the cow
-            Block chestOutput = event.getBlock().getRelative(BlockFace.DOWN);
-            if (chestOutput.getType().equals(Material.CHEST)) {
-                Chest chest = (Chest) chestOutput.getState();
-                Inventory chestInventory = chest.getInventory();
-                if (Util.inventoryHasSpace(chestInventory)) {
-                    chestInventory.addItem(new ItemStack(Material.MILK_BUCKET));
+            // Check for a container with inventory space below the cow
+            Block belowBlock = targetBlock.getRelative(BlockFace.DOWN);
+            if (belowBlock instanceof Container) {
+                Container container = (Container) belowBlock.getState();
+                Inventory containerInventory = container.getInventory();
+                if (Util.inventoryHasSpace(containerInventory)) {
+                    containerInventory.addItem(new ItemStack(Material.MILK_BUCKET));
                     return true;
                 }
             }

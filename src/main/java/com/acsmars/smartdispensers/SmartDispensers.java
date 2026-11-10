@@ -5,10 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SmartDispensers extends JavaPlugin {
@@ -24,8 +21,9 @@ public class SmartDispensers extends JavaPlugin {
         FileConfiguration config = this.getConfig();
 
         Map<Material, List<InteractionType>> materialInteractions = parseMaterialInteractions(config);
+        List<Material> nonPlaceableBlocks = parseNonPlaceableBlocks(config);
         getLogger().info(String.format("Loaded interactions for %d dispenser interactions", materialInteractions.size()));
-        dispenserListener = new DispenserListener(this, materialInteractions);
+        dispenserListener = new DispenserListener(this, materialInteractions, nonPlaceableBlocks);
 
         getServer().getPluginManager().registerEvents(dispenserListener, this);
 
@@ -53,7 +51,20 @@ public class SmartDispensers extends JavaPlugin {
                             .collect(Collectors.toList()));
         }
 
-        getLogger().info("" + map);
+        getLogger().info("Interactions map:" + map);
         return map;
+    }
+
+    private List<Material> parseNonPlaceableBlocks(FileConfiguration config) {
+        try {
+            List<String> nonPlaceableBlocksString = (List<String>) config.getList("nonplaceable");
+            List<Material> nonPlaceableBlocks = nonPlaceableBlocksString.stream().map(Material::matchMaterial).collect(Collectors.toList());
+            getLogger().info("Nonplaceable blocks: " + nonPlaceableBlocks);
+            return nonPlaceableBlocks;
+        } catch (Exception e) {
+            getLogger().warning("Failed to load nonplaceable blocks from config");
+        }
+
+        return new ArrayList<>();
     }
 }
